@@ -2,20 +2,19 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    kotlin("plugin.serialization")
 }
 
 android {
     namespace = "ru.marat.headhunter"
-    compileSdk = (project.ext.get("compileSdk") as String).toInt()
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ru.marat.headhunter"
-        minSdk = (project.ext.get("minSdk") as String).toInt()
-        targetSdk = (project.ext.get("targetSdk") as String).toInt()
+        minSdk = 26
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -39,8 +38,14 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:${project.ext.get("androidxCore")}")
     implementation("androidx.appcompat:appcompat:${project.ext.get("androidxAppcompat")}")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Dagger
     implementation("com.google.dagger:dagger:${project.ext.get("dagger")}")
     kapt("com.google.dagger:dagger-compiler:${project.ext.get("dagger")}")
+
+    // Ktor
+    implementation("io.ktor:ktor-client-core:2.3.5")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${project.ext.get("kotlinSerialization")}")
 }

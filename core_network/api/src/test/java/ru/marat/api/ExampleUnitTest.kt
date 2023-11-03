@@ -1,4 +1,4 @@
-package ru.marat.headhunter
+package ru.marat.api
 
 import org.junit.Test
 
