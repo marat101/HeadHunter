@@ -33,6 +33,6 @@ android {
 }
 
 dependencies {
+    implementation(project(":core_network:api"))
     implementation("io.ktor:ktor-client-android:2.2.2")
-    implementation("io.ktor:ktor-client-core:2.3.5")
 }
