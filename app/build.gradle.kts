@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core_navigation"))
+
     implementation("androidx.core:core-ktx:${project.ext.get("androidxCore")}")
     implementation("androidx.appcompat:appcompat:${project.ext.get("androidxAppcompat")}")
     implementation("com.google.android.material:material:1.10.0")

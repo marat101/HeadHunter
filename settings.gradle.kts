@@ -19,3 +19,5 @@ include(":app")
 include(":core_network")
 include(":core_network:api")
 include(":core_network:impl")
+
+include(":core_navigation")
