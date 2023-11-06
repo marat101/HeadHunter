@@ -16,6 +16,16 @@
             <option value="$PROJECT_DIR$/core_network" />
             <option value="$PROJECT_DIR$/core_network/api" />
             <option value="$PROJECT_DIR$/core_network/impl" />
+            <option value="$PROJECT_DIR$/feature_home" />
+            <option value="$PROJECT_DIR$/feature_home/api" />
+            <option value="$PROJECT_DIR$/feature_home/impl" />
+            <option value="$PROJECT_DIR$/feature_profile" />
+            <option value="$PROJECT_DIR$/feature_profile/api" />
+            <option value="$PROJECT_DIR$/feature_profile/impl" />
+            <option value="$PROJECT_DIR$/feature_root" />
+            <option value="$PROJECT_DIR$/feature_search" />
+            <option value="$PROJECT_DIR$/feature_search/api" />
+            <option value="$PROJECT_DIR$/feature_search/impl" />
           </set>
         </option>
       </GradleProjectSettings>

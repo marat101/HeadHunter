@@ -1,16 +1,23 @@
 package ru.marat.core_navigation
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import kotlin.reflect.KClass
 
 @Suppress("UNCHECKED_CAST")
-internal object FragmentFactory {
+object FragmentFactory {
 
     private var provider: Router? = null
 
-    fun init(provider: Router) {
+    fun init(
+        provider: Router,
+        @IdRes rootContainerId: Int,
+        @IdRes mainContainerId: Int,
+    ) {
         this.provider = provider
+        NavController.mainContainer = mainContainerId
+        NavController.rootContainer = rootContainerId
     }
 
     fun <T : Route> createFragment(clazz: KClass<T>, bundle: Bundle?): Fragment {

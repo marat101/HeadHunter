@@ -21,3 +21,17 @@ include(":core_network:api")
 include(":core_network:impl")
 
 include(":core_navigation")
+
+include(":feature_home")
+include(":feature_home:api")
+include(":feature_home:impl")
+
+include(":feature_search")
+include(":feature_search:api")
+include(":feature_search:impl")
+
+include(":feature_profile")
+include(":feature_profile:api")
+include(":feature_profile:impl")
+
+include(":feature_root")

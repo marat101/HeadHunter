@@ -3,7 +3,7 @@ package ru.marat.headhunter.di
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
-import ru.marat.headhunter.MainActivity
+import ru.marat.feature_root.MainActivity
 
 @Component
 interface AppComponent {

@@ -8,6 +8,6 @@ import ru.marat.api.AppHttpClient
 
 class AppHttpClientImpl(private val client: HttpClient): AppHttpClient {
     override suspend fun request(builder: HttpRequestBuilder.() -> Unit): HttpResponse {
-        return client.request {  }
+        return client.request(builder) // todo
     }
 }
