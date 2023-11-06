@@ -17,7 +17,7 @@ object NavController {
     internal var mainContainer: Int? = null
 
     fun <T : Route> navigate(
-        clazz: KClass<T>? =null, //fixme это потом убрать
+        clazz: KClass<T>,
         manager: FragmentManager,
         isReplace: Boolean = false,
         addToBackStack: Boolean = true,
@@ -28,7 +28,7 @@ object NavController {
         manager.commit {
             setReorderingAllowed(true)
 
-            val fragment = if (clazz == null) Fragment() else FragmentFactory.createFragment(clazz, args)
+            val fragment = FragmentFactory.createFragment(clazz, args)
 
             if (hide) manager.fragments.lastOrNull { !it.isHidden }?.let(::hide)
 

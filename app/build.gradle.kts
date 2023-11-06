@@ -39,8 +39,8 @@ dependencies {
     implementation(project(":core_navigation"))
     implementation(project(":core_network:api"))
 
-//    implementation(project(":feature_profile:api"))
-//    implementation(project(":feature_profile:impl"))
+    implementation(project(":feature_profile:api"))
+    implementation(project(":feature_profile:impl"))
     implementation(project(":feature_search:api"))
     implementation(project(":feature_search:impl"))
     implementation(project(":feature_home:api"))

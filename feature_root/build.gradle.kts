@@ -34,6 +34,8 @@ android {
 
 dependencies {
     implementation(project(":feature_home:api"))
+    implementation(project(":feature_search:api"))
+    implementation(project(":feature_profile:api"))
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

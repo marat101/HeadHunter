@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,5 +34,14 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature_profile:api"))
 
+    implementation("androidx.core:core-ktx:${project.ext.get("androidxCore")}")
+    implementation("androidx.appcompat:appcompat:${project.ext.get("androidxAppcompat")}")
+    implementation("com.google.android.material:material:1.10.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Dagger
+    implementation("com.google.dagger:dagger:${project.ext.get("dagger")}")
+    kapt("com.google.dagger:dagger-compiler:${project.ext.get("dagger")}")
 }
