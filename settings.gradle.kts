@@ -35,3 +35,4 @@ include(":feature_profile:api")
 include(":feature_profile:impl")
 
 include(":feature_root")
+include(":core_view")

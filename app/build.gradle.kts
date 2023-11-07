@@ -38,6 +38,8 @@ android {
 dependencies {
     implementation(project(":core_navigation"))
     implementation(project(":core_network:api"))
+    implementation(project(":core_network:impl"))
+    implementation(project(":core_view"))
 
     implementation(project(":feature_profile:api"))
     implementation(project(":feature_profile:impl"))

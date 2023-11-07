@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.HeadHunter" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondaryContainer">@color/colorSecondaryContainer</item>
+    </style>
+
+    <style name="Theme.HeadHunter" parent="Base.Theme.HeadHunter" />
+</resources>
