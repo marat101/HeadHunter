@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.PathEffect
 import android.util.AttributeSet
 import android.view.View
 import ru.marat.core_view.toPx
@@ -17,12 +18,13 @@ class Diagram @JvmOverloads constructor(
 ) : View(context, attrStyle, defStyle) {
 
     private val strokeWidth = 40f.toPx(this)
-    private val spacingRadius = 5f
+    private val spacingRadius = 20f
 
     private val paint = Paint().apply {
         color = Color.RED
         strokeWidth = this@Diagram.strokeWidth
         style = Paint.Style.STROKE
+        strokeCap = Paint.Cap.ROUND
     }
 
 
@@ -52,8 +54,8 @@ class Diagram @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas?) {
         val padding = strokeWidth / 2f
         val arcSize = maxDimension - padding
-            var sweepAngle = items?.first()?.value?.toSweepAngle()?:0f
-        var startAngle = -(sweepAngle/2f)
+        var sweepAngle = items?.first()?.value?.toSweepAngle() ?: 0f
+        var startAngle = -(sweepAngle / 2f)
         items?.forEach {
             sweepAngle = it.value.toSweepAngle()
             canvas?.drawArc(
@@ -68,12 +70,13 @@ class Diagram @JvmOverloads constructor(
                     color = it.color
                 }
             )
-            startAngle += sweepAngle
+            startAngle += sweepAngle - spacingRadius
         }
     }
 
     private fun Float.toSweepAngle(reversed: Boolean = true): Float {
-        val sweep = (this / fullValue)*360f
+        val spacing = if ((items?.size ?: 0) > 1) (items?.size ?: 0) * spacingRadius else 0f
+        val sweep = (this / fullValue) * (360f - spacing)
         return if (reversed) -sweep else sweep
     }
 }
