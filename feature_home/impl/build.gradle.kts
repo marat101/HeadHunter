@@ -36,6 +36,7 @@ android {
 
 dependencies {
     implementation(project(":feature_home:api"))
+    implementation(project(":core_view"))
 
     implementation("androidx.core:core-ktx:${project.ext.get("androidxCore")}")
     implementation("androidx.appcompat:appcompat:${project.ext.get("androidxAppcompat")}")

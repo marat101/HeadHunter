@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="black80">#CC000000</color>
+    <color name="black60">#99000000</color>
+    <color name="black40">#66000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#2B7216</color>
     <color name="colorSecondaryContainer">#9E79A16D</color>
     <color name="ic_launcher_background">#4FB579</color>
-    <color name="card_background">#F9FCF7</color>
+    <color name="card_background">#FAFBFA</color>
 </resources>

@@ -103,10 +103,25 @@
                 android:textColor="@color/black"
                 tools:text="Без опыта" />
         </GridLayout>
+
+        <TextView
+            android:id="@+id/requirement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="5"
+            android:visibility="visible"
+            android:textColor="@color/black60"
+            tools:visibility="visible"
+            android:text="Возможность и желание работать в выходные дни при необходимости. Держать под контролем задачу в течение всего дня. Внимательность, организованность и..." />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:paddingHorizontal="4dp"
             android:paddingVertical="4dp"
             android:fontFamily="@font/roboto_bold"
