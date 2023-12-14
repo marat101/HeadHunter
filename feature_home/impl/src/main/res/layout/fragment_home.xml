@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
 
     <TextView
-        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="HOME SCREEN" />
+        android:text="HOME SCREEN"
+        android:textColor="#000000" />
 
     <ru.marat.core_view.diagram.Diagram
-        android:id="@+id/diagram"
-        android:layout_width="100dp"
+        android:id="@+id/circular_diagram"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_marginBottom="60dp"
-        android:layout_height="0dp"/>
-</FrameLayout>
+        app:diagram_type="circular"
+        app:spacing_radius="14"
+        android:clickable="true"
+        app:strokeWidth="30dp" />
+    <ru.marat.core_view.diagram.Diagram
+        android:id="@+id/diagram"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="60dp"
+        app:diagram_type="line"
+        app:spacing_radius="0"
+        app:strokeWidth="30dp" />
+</LinearLayout>

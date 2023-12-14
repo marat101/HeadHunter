@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Diagram">
+        <attr name="strokeWidth" format="dimension"/>
+        <attr name="spacing_radius" format="float"/>
+        <attr name="diagram_type">
+            <enum name="line" value="0" />
+            <enum name="circular" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>
