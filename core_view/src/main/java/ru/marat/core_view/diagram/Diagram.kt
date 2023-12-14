@@ -10,6 +10,7 @@ import android.graphics.PorterDuffXfermode
 import android.graphics.RadialGradient
 import android.graphics.Shader.TileMode
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.core.graphics.ColorUtils
@@ -61,7 +62,7 @@ class Diagram @JvmOverloads constructor(
     private var maxSize = 0f
     private var fullValue = 0f
 
-    private val animator = ValueAnimator.ofFloat(0f, fullValue).apply {
+    private val animator = ValueAnimator.ofFloat(0f).apply {
         addUpdateListener {
             invalidate()
         }
@@ -69,17 +70,20 @@ class Diagram @JvmOverloads constructor(
     }
 
 
-    var items: List<DiagramItem>? = null
+    var items: List<DiagramItem> = listOf()
         set(value) {
-            field = value
             fullValue = 0f
-            value?.forEach { item ->
+            value.forEach { item ->
                 fullValue += item.value
             }
-            val valuesCount = value?.size?.toLong() ?: 0
-            animator.duration = ((valuesCount * 200)).coerceAtMost(3000)
-            animator.setFloatValues(0f, valuesCount.toFloat())
-            invalidate()
+            if (type == DiagramType.CIRCULAR) {
+                val valuesCount = value.size.toLong()
+                animator.duration = (((valuesCount- field.size) * 200)).coerceAtMost(3000)
+                animator.setFloatValues(field.size.toFloat(), valuesCount.toFloat())
+                animator.start()
+            } else
+                invalidate()
+            field = value
         }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -108,21 +112,22 @@ class Diagram @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        if (type == DiagramType.LINE)
-            drawLineChart(canvas)
-        else
-            drawPieChart(canvas)
+        if (items.isNotEmpty())
+            if (type == DiagramType.LINE)
+                drawLineChart(canvas)
+            else
+                drawPieChart(canvas)
     }
 
     private fun Float.toSweepAngle(reversed: Boolean = true): Float {
-        val spacing = if ((items?.size ?: 0) > 1) (items?.size ?: 0) * spacingRadius else 0f
+        val spacing = if (items.size > 1) items.size * spacingRadius else 0f
         val sweep = (this / fullValue) * (360f - spacing)
         return if (reversed) -sweep else sweep
     }
 
     private fun drawLineChart(canvas: Canvas?) {
         var previousEndX = 0f
-        items?.forEach { item ->
+        items.forEach { item ->
             canvas?.drawRoundRect(
                 0f,
                 0f,
@@ -134,16 +139,16 @@ class Diagram @JvmOverloads constructor(
                     color = item.color
                 }
             )
-            previousEndX += maxSize * (item.value/fullValue)
+            previousEndX += maxSize * (item.value / fullValue)
         }
     }
 
     private fun drawPieChart(canvas: Canvas?) {
         val padding = strokeWidth / 2f
         val arcSize = maxSize - padding
-        var sweepAngle = items?.first()?.value?.toSweepAngle() ?: 0f
+        var sweepAngle = items.first().value.toSweepAngle()
         var startAngle = -(sweepAngle / 2f)
-        items?.forEachIndexed { index, it ->
+        items.forEachIndexed { index, it ->
             sweepAngle = it.value.toSweepAngle()
             val animatedValue = animator.animatedValue as Float
             val animProgress = (animatedValue - index).coerceIn(0f, 1f)

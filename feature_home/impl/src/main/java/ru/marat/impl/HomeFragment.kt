@@ -9,6 +9,7 @@ import ru.marat.core_view.diagram.DiagramItem
 import ru.marat.core_view.diagram.DiagramType
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val diagram = view.findViewById<Diagram>(R.id.diagram)
@@ -16,6 +17,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         circularDiagram.setOnClickListener {
             circularDiagram.type =
                 if (circularDiagram.type == DiagramType.LINE) DiagramType.CIRCULAR else DiagramType.LINE
+        }
+        diagram.setOnClickListener {
+            circularDiagram.items = circularDiagram.items + DiagramItem(color = Color.BLACK, value = (1..100).random().toFloat())
+            diagram.items = diagram.items + DiagramItem(color = Color.BLACK, value = (1..100).random().toFloat())
         }
         diagram.items = list
         circularDiagram.items = list
